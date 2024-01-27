@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_country"
+    app:startDestination="@id/nav_feed_fragment">
+
+    <fragment
+        android:id="@+id/nav_feed_fragment"
+        android:name="com.muhammad.coutry.list.coutryinfo.fragment.FeedFragment"
+        android:label="@string/nav_feed_fragment_label">
+
+        <action
+            android:id="@+id/action_nav_feed_fragment_to_nav_country_fragment"
+            app:destination="@id/nav_country_fragment" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_country_fragment"
+        android:name="com.muhammad.coutry.list.coutryinfo.fragment.CountryFragment"
+        android:label="@string/nav_country_fragment_label">
+
+        <action
+            android:id="@+id/action_nav_country_fragment_to_nav_feed_fragment"
+            app:destination="@id/nav_feed_fragment" />
+
+    </fragment>
+
+</navigation>

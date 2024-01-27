@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/country_item_info_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:maxHeight="120dp"
+            android:layout_margin="5dp"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/country_item_info_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/country_item_info_region"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/country_item_info_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/country_item_info_language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textSize="16sp" />
+
+
+
+    </LinearLayout>
+
+</layout>

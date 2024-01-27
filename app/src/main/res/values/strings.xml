@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Coutry Info</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_feed_fragment_label">Country List</string>
+    <string name="nav_country_fragment_label">Country Info</string>
+    <string name="nav_argument_default_country_name">Turkey</string>
+    <string name="country_name_text">Country Name:</string>
+    <string name="region_name_title">Region:</string>
+    <string name="country_flag">Country_flag</string>
+</resources>
