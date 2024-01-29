@@ -1,25 +1,25 @@
 package com.muhammad.coutry.list.coutryinfo.view_model
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.muhammad.coutry.list.coutryinfo.model.CountryModel
+import com.muhammad.coutry.list.coutryinfo.service.CountryDatabase
+import kotlinx.coroutines.launch
 
 class CountryViewModel(application:Application) : BaseViewModel(application) {
 
-    companion object {
+     val countryLiveData = MutableLiveData<CountryModel>()
 
-        const val BASE_URL = "https://raw.githubusercontent.com/"
-    }
+     fun getFromDatabase(uuid:Int) {
 
-    val countryInfo = MutableLiveData<CountryModel>()
+         launch {
 
-    fun getDataFromOtherFragment(data:String){
+             val dao = CountryDatabase(getApplication()).countryDao()
 
-        when(data){
-
-            data ->  "0"
-
-        }
-    }
+             countryLiveData.value = dao.getCountry(uuid)
+             
+         }
+     }
 }

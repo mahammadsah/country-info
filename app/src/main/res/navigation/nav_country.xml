@@ -25,6 +25,10 @@
             android:id="@+id/action_nav_country_fragment_to_nav_feed_fragment"
             app:destination="@id/nav_feed_fragment" />
 
+        <argument
+            android:name="country_uuid"
+            app:argType="long" />
+
     </fragment>
 
 </navigation>

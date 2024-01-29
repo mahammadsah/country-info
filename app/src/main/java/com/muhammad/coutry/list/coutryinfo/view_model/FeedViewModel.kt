@@ -13,6 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableSingleObserver
+
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.DisposableSubscriber
 import kotlinx.coroutines.launch
@@ -29,6 +30,8 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
     val feedProgress = MutableLiveData<Boolean>()
 
     val dataManager:DataManager = DataManager.invoke(application)
+
+    private var disposable : CompositeDisposable? = CompositeDisposable()
 
     private var timeRefresh = 0.2 * 60 * 1000 * 1000 * 1000L
 
@@ -63,26 +66,27 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
 
         try{
 
-            CompositeDisposable().add(
-                CountryApiService().getData()
-                    .subscribeOn(Schedulers.newThread())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(object: DisposableSingleObserver<ArrayList<CountryModel>>(){
-                        override fun onSuccess(t: ArrayList<CountryModel>) {
+            disposable?.run {
+                add(CountryApiService().getData()
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(object: DisposableSingleObserver<ArrayList<CountryModel>>(){
+                            override fun onSuccess(t: ArrayList<CountryModel>) {
 
-                            putDataInLocalDatabase(t)
+                                putDataInLocalDatabase(t)
 
-                            Toast.makeText(getApplication(), "from API ", Toast.LENGTH_LONG).show()
-                        }
+                                Toast.makeText(getApplication(), "from API ", Toast.LENGTH_LONG).show()
+                            }
 
-                        override fun onError(e: Throwable) {
+                            override fun onError(e: Throwable) {
 
-                            feedProgress.value = false
+                                feedProgress.value = false
 
-                            feedError.value = true
-                        }
-                    })
-            )
+                                feedError.value = true
+                            }
+                        }))
+            }
+
 
         }catch(ex:Exception){
 
@@ -130,6 +134,17 @@ class FeedViewModel(application: Application) : BaseViewModel(application) {
                 dataManager.saveTime(System.nanoTime())
 
                 showCountries(countryList)
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+
+        disposable?.run {
+
+            clear()
+
+            disposable = null
         }
     }
 }

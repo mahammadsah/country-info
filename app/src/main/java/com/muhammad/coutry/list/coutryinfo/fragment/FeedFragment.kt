@@ -17,9 +17,9 @@ import com.muhammad.coutry.list.coutryinfo.view_model.FeedViewModel
 
 class FeedFragment : Fragment() {
 
-    lateinit var binding:FragmentFeedBinding
+    private lateinit var binding:FragmentFeedBinding
 
-    lateinit var adapter:FeedAdapter
+    private lateinit var adapter:FeedAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,7 +29,7 @@ class FeedFragment : Fragment() {
 
         context?.let {
 
-            adapter = FeedAdapter(it, arrayListOf())
+            adapter = FeedAdapter(it, arrayListOf(), 0)
         }
 
         return binding.root

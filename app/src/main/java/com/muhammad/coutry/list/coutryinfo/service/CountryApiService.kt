@@ -12,8 +12,12 @@ import java.lang.reflect.Proxy
 
 class CountryApiService {
 
+    companion object {
+
+        const val BASE_URL:String = "https://raw.githubusercontent.com/"
+    }
     private val api = Retrofit.Builder()
-        .baseUrl(CountryViewModel.BASE_URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
