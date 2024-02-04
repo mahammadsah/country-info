@@ -2,34 +2,23 @@ package com.muhammad.coutry.list.coutryinfo.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.persistableBundleOf
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavDirections
-import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.muhammad.coutry.list.coutryinfo.R
 import com.muhammad.coutry.list.coutryinfo.databinding.LayoutFeedItemBinding
-import com.muhammad.coutry.list.coutryinfo.fragment.CountryFragmentDirections
 import com.muhammad.coutry.list.coutryinfo.fragment.FeedFragmentDirections
 import com.muhammad.coutry.list.coutryinfo.model.CountryListener
 import com.muhammad.coutry.list.coutryinfo.model.CountryModel
-import com.muhammad.coutry.list.coutryinfo.util.downloadFromUrl
-import com.muhammad.coutry.list.coutryinfo.util.placeHolderProgressDrawable
-
 class FeedAdapter(context:Context, feedList:ArrayList<CountryModel>, private var uuid:Int):
     RecyclerView.Adapter<FeedAdapter.CountryViewHolder>() {
 
     private val context:Context
 
     private var feedList:List<CountryModel>
-
-    private var position:Int = 0
 
     init{
 
